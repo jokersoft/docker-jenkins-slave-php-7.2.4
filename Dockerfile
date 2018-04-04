@@ -28,7 +28,7 @@ ENV INITRD              no
 ENV LC_ALL              C.UTF-8
 ENV DEBIAN_FRONTEND     noninteractive
 
-ENV GPG_KEYS 1729F83938DA44E27BA0F4D3DBDB397470D12172
+ENV GPG_KEYS 1729F83938DA44E27BA0F4D3DBDB397470D12172 B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F
 ENV PHP_VERSION 7.2.4
 ENV PHP_FILENAME php-7.2.4.tar.xz
 ENV PHP_SHA256 7916b1bd148ddfd46d7f8f9a517d4b09cd8a8ad9248734e7c8dd91ef17057a88
@@ -133,8 +133,11 @@ RUN chmod +x /usr/local/bin/docker-php-ext-*
 RUN set -e \
     && apt-get update -qq && apt-get install -y --no-install-recommends apt-utils xz-utils libfreetype6-dev libjpeg62-turbo libmcrypt-dev libpng-dev libssl-dev libcurl4-openssl-dev libsasl2-dev libicu-dev libjpeg-dev
 
+RUN pecl install mcrypt-1.0.1
+
 RUN set -e \
-    && docker-php-ext-install iconv mcrypt intl mbstring ctype zip exif pdo pdo_mysql \
+    && docker-php-ext-enable mcrypt \
+    && docker-php-ext-install iconv intl mbstring ctype zip exif pdo pdo_mysql \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd
 
