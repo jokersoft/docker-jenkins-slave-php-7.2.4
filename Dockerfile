@@ -15,7 +15,7 @@ LABEL com.container.vendor="yarche" \
       com.container.service="jokersoft/service/jenkins/php" \
       com.container.priority="1" \
       com.container.project="jokersoft-service-jenkins-php-slave" \
-      img.version="0.9.6" \
+      img.version="0.0.1" \
       img.name="local/jokersoft/service/jenkins/slave/php/7" \
       img.description="jenkins ci slave service (jnlp) image for dynamic slave build using kubernetes"
 
@@ -29,9 +29,9 @@ ENV LC_ALL              C.UTF-8
 ENV DEBIAN_FRONTEND     noninteractive
 
 ENV GPG_KEYS 1729F83938DA44E27BA0F4D3DBDB397470D12172
-ENV PHP_VERSION 7.2.3
-ENV PHP_FILENAME php-7.2.3.tar.xz
-ENV PHP_SHA256 b3a94f1b562f413c0b96f54bc309706d83b29ac65d9b172bc7ed9fb40a5e651f
+ENV PHP_VERSION 7.2.4
+ENV PHP_FILENAME php-7.2.4.tar.xz
+ENV PHP_SHA256 7916b1bd148ddfd46d7f8f9a517d4b09cd8a8ad9248734e7c8dd91ef17057a88
 
 ENV PHP_INI_DIR /usr/local/etc/php
 
